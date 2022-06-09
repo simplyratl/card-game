@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./style/dist/style.min.css" />
+        <title>Choose Difficulty</title>
+    </head>
+    <body>
+        <div class="difficulty-container">
+            <div class="difficulty-wrapper">
+                <h1>Choose difficulty.</h1>
+
+                <div class="difficulty-option">
+                    <button class="btn">Easy 4x4</button>
+                    <button class="btn">Medium 6x6</button>
+                    <button class="btn">Hard 8x8</button>
+                </div>
+
+                <button class="btn-start" onclick="submit()">START</button>
+                <span id="error"></span>
+            </div>
+        </div>
+
+        <script src="difficulty.js"></script>
+    </body>
+</html>
