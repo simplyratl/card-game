@@ -31,28 +31,36 @@ body {
 
     .memory-game-wrapper {
         display: grid;
+
+        width: 700px;
+        height: 700px;
+
+        max-width: 700px;
+        height: 700px;
+
+        padding: 12px;
+        gap: 8px;
+
         background: rgba(255, 255, 255, 0.2);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 12px;
-        gap: 8px;
 
         &.easy {
-            grid-template-columns: repeat(4, minmax(140px, 1fr));
-            grid-template-rows: repeat(4, minmax(170px, 1fr));
+            grid-template-columns: repeat(4, minmax(100px, 1fr));
+            grid-template-rows: repeat(4, minmax(100px, 1fr));
         }
 
         &.medium {
-            grid-template-columns: repeat(6, minmax(140px, 1fr));
-            grid-template-rows: repeat(6, minmax(170px, 1fr));
+            grid-template-columns: repeat(6, minmax(80px, 1fr));
+            grid-template-rows: repeat(6, minmax(80px, 1fr));
         }
 
         &.hard {
-            grid-template-columns: repeat(8, minmax(140px, 1fr));
-            grid-template-rows: repeat(8, minmax(170px, 1fr));
+            grid-template-columns: repeat(8, minmax(40px, 1fr));
+            grid-template-rows: repeat(8, minmax(40px, 1fr));
         }
 
         .memory-card {
@@ -63,6 +71,7 @@ body {
 
             &:active {
                 transform: scale(0.96);
+                filter: drop-shadow(0 8px 32px 0 rgba(0, 0, 0, 0.5));
             }
 
             &.flip {
@@ -74,19 +83,30 @@ body {
                 width: 100%;
                 height: 100%;
                 position: absolute;
-                padding: 6px;
-                border-radius: 6px;
+                border-radius: 16px;
                 backface-visibility: hidden;
+                user-select: none;
             }
 
             .front-face {
                 transform: rotateY(180deg);
                 object-fit: cover;
-                border: 2px solid $border-color;
+
+                background: rgba(255, 0, 0, 0.35);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.18);
             }
 
-            img {
-                width: 100px;
+            .back-face {
+                background: rgba(0, 3, 5, 0.75);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.18);
             }
         }
     }
@@ -110,24 +130,55 @@ body {
 
         h1 {
             color: #fff;
+            // margin-bottom: 80px;
+            font-size: 4.6rem;
+            text-shadow: 4px 3px 0 #7a7a7a;
+        }
+
+        h2 {
+            color: #fff;
             margin-bottom: 80px;
-            font-size: 4rem;
+            font-size: 2.6rem;
+            text-shadow: 4px 3px 0 #7a7a7a;
         }
 
         button {
+            position: relative;
+            display: block;
             cursor: pointer;
             background-color: transparent;
             color: #fff;
             border-radius: 4px;
-            border: 1px solid #fff;
+            border: 2px solid #fff;
             transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                top: var(--y);
+                left: var(--x);
+                transform: translate(-50%, -50%) scale(0);
+                border-radius: 50%;
+                z-index: -1;
+                aspect-ratio: 1 / 1;
+                transition: 0.2s;
+            }
 
             &:hover {
                 transform: scale(1.03);
+                text-shadow: 2px 1px 0 #000000;
             }
 
             &:active {
                 transform: scale(0.97);
+                box-shadow: 4px 3px rgba($color: #000000, $alpha: 1);
+
+                &::before {
+                    background-color: rgba($color: coral, $alpha: 0.4);
+                    transform: translate(-50%, -50%) scale(1);
+                }
             }
         }
 
@@ -140,7 +191,8 @@ body {
                 margin: 0 12px;
 
                 &.active {
-                    background-color: red;
+                    background-color: coral;
+                    text-shadow: 2px 1px 0 #000000;
                 }
             }
         }
@@ -151,7 +203,6 @@ body {
             padding: 12px 40px;
 
             &:hover {
-                background-color: red;
             }
         }
 
