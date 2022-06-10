@@ -2,6 +2,10 @@ const queryString = window.location.search;
 const parameters = new URLSearchParams(queryString);
 const chosenGame = parameters.get("name");
 
+if (!chosenGame || (chosenGame !== "easy4x4" && chosenGame && "medium6x6" && chosenGame !== "hard8x8")) {
+    window.location.href = "/difficulty.html";
+}
+
 let flipped = false;
 let firstCard, secondCard;
 let lock = false;
@@ -131,6 +135,10 @@ function displayByDifficulty() {
     cards = document.querySelectorAll(".memory-card");
     cards.forEach((card) => card.addEventListener("click", flipCard));
 
+    timerEnd = false;
+
+    timerCycle();
+
     // shuffle();
 }
 
@@ -199,6 +207,8 @@ function flipCard() {
 }
 
 const endGameDiv = () => {
+    timerEnd = true;
+
     if (!musicMute) {
         const audio = new Audio(
             highestScore >= points ? "./sound_effects/win.wav" : "./sound_effects/lose.wav"
@@ -230,6 +240,7 @@ const endGameDiv = () => {
 
             <h1 id="highest-score">Highest score: ${highestScore}</h1>
             <h1 id="points">Points: ${points}</h1>
+            <h2 id="timer">Time: ${timer.innerHTML}</h2>
 
             <div class="btns">
                 <button class="btn-start" id="reset" onclick="resetBoard()">START OVER</button>
@@ -249,6 +260,8 @@ const resetBoard = () => {
     points = 0;
     resetingBoard();
     matchedCards = 0;
+
+    timerReset();
 
     displayByDifficulty();
     document.getElementById("end-game").remove();
