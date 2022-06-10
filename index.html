@@ -5,15 +5,29 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./style/dist/style.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+        <script src="https://kit.fontawesome.com/f5f8362cf6.js" crossorigin="anonymous"></script>
         <title>Card Game</title>
     </head>
 
     <body>
         <div class="memory-game-container">
+            <h1 id="highest-score">Highest score: 0</h1>
             <h1 id="points">0</h1>
             <div class="memory-game-wrapper"></div>
         </div>
 
+        <div class="volume-control"><i class="fa-solid fa-volume-low"></i></div>
+
+        <audio
+            src="./sound_effects/de_la_justice_rasdep_prod_coeur_empoisonne_2593809097754464526.mp3"
+            loop
+            hidden
+            autoplay
+            id="music"
+        ></audio>
+
         <script src="script.js"></script>
+        <script src="music.js"></script>
     </body>
 </html>
