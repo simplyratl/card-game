@@ -2,8 +2,10 @@ const queryString = window.location.search;
 const parameters = new URLSearchParams(queryString);
 const chosenGame = parameters.get("name");
 
-if (!chosenGame || (chosenGame !== "easy4x4" && chosenGame !== "medium6x6" && chosenGame !== "hard8x8"))
-    window.location.href = "/difficulty.html";
+(function checkValidURL() {
+    if (!chosenGame || (chosenGame !== "easy4x4" && chosenGame !== "medium6x6" && chosenGame !== "hard8x8"))
+        window.location.href = "./difficulty.html";
+})();
 
 const memory_game = document.querySelector(".memory-game-wrapper");
 let cards;
@@ -130,7 +132,7 @@ function flipCard() {
                     document.getElementById("end-game").classList.add("active");
                 }, 400);
 
-                confetti();
+                highestScore <= points && confetti();
             }, 600);
         }
     }

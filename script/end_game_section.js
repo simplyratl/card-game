@@ -26,7 +26,7 @@ const END_GAME_DIV = () => {
 
         <div class="btns">
             <button class="btn-start" id="reset" onclick="resetBoard()">START OVER</button>
-            <a href="/difficulty.html" style="text-decoration: none; color: #fff;">
+            <a href="./difficulty.html" style="text-decoration: none; color: #fff;">
                 <button class="btn-start" id="go-back">GO BACK</button>
             </a>
         </div>
