@@ -2,6 +2,7 @@ const timer = document.getElementById("timer");
 let hr = 0;
 let min = 0;
 let sec = 0;
+const SECOND_REAL_TIME = 1000;
 
 let timerEnd = false;
 
@@ -31,7 +32,7 @@ const timerCycle = () => {
     timer.innerHTML = min + ":" + sec;
 
     if (!timerEnd) {
-        setTimeout(timerCycle, 1000);
+        setTimeout(timerCycle, SECOND_REAL_TIME);
     }
 };
 

@@ -26,7 +26,7 @@ const submit = () => {
     if (currentActive) {
         let game = currentActive.innerHTML.replace(" ", "").toLowerCase();
 
-        window.location.href = `/index.html?name=${game}`;
+        window.location.href = `./index.html?name=${game}`;
         return;
     } else {
         setTimeout(() => {

@@ -54,17 +54,17 @@ body {
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.3);
 
-        &.easy {
+        &.easy4x4 {
             grid-template-columns: repeat(4, minmax(100px, 1fr));
             grid-template-rows: repeat(4, minmax(100px, 1fr));
         }
 
-        &.medium {
+        &.medium6x6 {
             grid-template-columns: repeat(6, minmax(80px, 1fr));
             grid-template-rows: repeat(6, minmax(80px, 1fr));
         }
 
-        &.hard {
+        &.hard8x8 {
             grid-template-columns: repeat(8, minmax(40px, 1fr));
             grid-template-rows: repeat(8, minmax(40px, 1fr));
         }
@@ -319,6 +319,7 @@ body {
     position: absolute;
     top: 20px;
     right: 32px;
+    z-index: 999;
 
     i {
         position: relative;
